@@ -88,9 +88,9 @@ namespace ClientIp.Controllers
                 }
             }
 
-            string res = context.Request.ServerVariables["REMOTE_ADDR"];
+            string[] res = context.Request.ServerVariables["REMOTE_ADDR"].Split(':');
 
-            return res  == "::1" ? "127.0.0.1" : res ;
+            return res[0];
         }
 
         public ServerVariables GetVariablesToModel(System.Web.HttpContext context)
